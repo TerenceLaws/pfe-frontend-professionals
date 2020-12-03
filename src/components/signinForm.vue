@@ -24,10 +24,10 @@ name: "signinForm",
   methods:{
     test: function (){
       const data= {
-          mail:"aaaa",
-          password:"bbbb"
+          mail: document.getElementById("login").value,
+          password:document.getElementById("password").value
       }
-      axios.post("https://pfe-backend-dev.herokuapp.com/doctors",data).then(r => console.log(r)).catch(r => console.error(r))
+      axios.post("https://pfe-backend-dev.herokuapp.com/professionals/login ",data).then(r => console.log(r)).catch(r => console.error(r))
     }
   }
 
