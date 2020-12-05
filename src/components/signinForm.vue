@@ -12,7 +12,7 @@
       </div>
     </form>
     <div class="form-group">
-      <button class="btn btn-secondary" v-on:click="test()">se connecter</button>
+      <button class="btn btn-secondary" v-on:click="login()">se connecter</button>
     </div>
   </div>
 </template>
@@ -22,17 +22,25 @@ import axios from 'axios'
 export default {
 name: "signinForm",
   methods:{
-    test: function (){
+    login: function (){
       const data= {
           mail: document.getElementById("login").value,
           password:document.getElementById("password").value
       }
-      axios.post("https://pfe-backend-dev.herokuapp.com/professionals/login ",data).then(r => console.log(r)).catch(r => console.error(r))
+      axios.post("https://pfe-backend-dev.herokuapp.com/professionals/login ",data)
+           .then(r => {
+             if(r.status==200) {
+               console.log(r)
+               document.getElementById("disconnectButton").hidden=false
+             }
+           })
+           .catch(r =>{
+             console.error(r)
+
+           })
     }
   }
-
 }
-
 </script>
 
 <style scoped>
