@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import signinForm from "@/components/signinForm";
 import signupForm from "@/components/signup"
+import DisplayQrCodes from "@/components/DisplayQrCodes";
 
 Vue.use(VueRouter)
 
@@ -29,6 +30,11 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+  },
+  {
+    path: '/displayQrCodes',
+    name: 'DisplayQrCodes',
+   component: DisplayQrCodes
   }
 ]
 
