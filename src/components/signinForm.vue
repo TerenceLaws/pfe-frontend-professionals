@@ -13,13 +13,17 @@
     </form>
     <div class="form-group">
       <button class="btn btn-secondary" v-on:click="login()">se connecter</button>
+
     </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import store from './blockCovidStore'
+import router from '../router'
 export default {
+  store:store,
 name: "signinForm",
   methods:{
     login: function (){
@@ -31,12 +35,20 @@ name: "signinForm",
            .then(r => {
              if(r.status==200) {
                console.log(r)
-               document.getElementById("disconnectButton").hidden=false
+               this.$store.commit('isConnectedTrue')
+               const user = {
+                 id:r.data[0]._id,
+                 mail:r.data[0].mail,
+                 address:r.data[0].address,
+                 name:r.data[0].name,
+                 is_doctor:r.data[0].is_doctor,
+               }
+               localStorage.user= user;
+               router.push("/")
              }
            })
            .catch(r =>{
              console.error(r)
-
            })
     }
   }

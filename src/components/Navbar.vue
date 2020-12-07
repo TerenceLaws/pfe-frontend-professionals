@@ -6,9 +6,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item ">
-          <router-link id="homeButton" class="nav-link" to="/">Home</router-link>
-        </li>
+
         <li class="nav-item ">
           <router-link id="aboutButton" class="nav-link" to="/about">About</router-link>
         </li>
@@ -18,13 +16,13 @@
       </ul>
       <ul class="nav justify-content-end">
         <li class="nav-item ">
-          <router-link id="loginButton" class="btn btn-outline-success my-2 my-sm-0 mx-1" to="/login" >Sign In</router-link>
+          <router-link id="loginButton" class="btn btn-outline-success my-2 my-sm-0 mx-1" to="/login" v-if="!$store.state.isConnected">Sign In</router-link>
         </li>
         <li class="nav-item ">
           <router-link id="registerButton" class="btn btn-outline-primary my-2 my-sm-0 mx-1" to="/register" >Sign Up</router-link>
         </li>
         <li class="nav-item ">
-          <router-link  id="disconnectButton" class="btn btn-outline-danger my-2 my-sm-0 mx-1" to="/register" >Log Out</router-link>
+          <button  id="disconnectButton" class="btn btn-outline-danger my-2 my-sm-0 mx-1" to="/register" v-on:click="logout()" v-if="$store.state.isConnected" >log Out</button>
         </li>
       </ul>
     </div>
@@ -32,9 +30,17 @@
 </template>
 
 <script>
+import store from './blockCovidStore'
 export default {
-name: "Navbar"
+  store:store,
+  name: "Navbar",
+  methods:{
+    logout:function (){
+      store.commit('isConnectedFalse')
+    }
+  }
 }
+
 </script>
 
 <style scoped>

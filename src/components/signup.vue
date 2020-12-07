@@ -36,22 +36,23 @@
 </template>
 
 <script>
-//import axios from 'axios'
+import axios from 'axios'
 export default {
 
 name: "signup",
   methods: {
     register: function(){
       const data = {
-        type: document.getElementById("registerType").value,
+        is_doctor: document.getElementById("registerType").value,
         name: document.getElementById("registerName").value,
-        adresse:document.getElementById("registerAdresse").value,
-        email:document.getElementById("registerEmail").value,
+        address:document.getElementById("registerAdresse").value,
+        mail:document.getElementById("registerEmail").value,
         password:document.getElementById("registerPassword").value,
 
       }
-      console.log(data)
-
+      axios.post("https://pfe-backend-dev.herokuapp.com/professionals/register",data)
+      .then(r => console.log(r))
+      .catch(error => console.error(error))
     }
   }
 }
