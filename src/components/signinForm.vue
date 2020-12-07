@@ -43,8 +43,11 @@ name: "signinForm",
                  name:r.data[0].name,
                  is_doctor:r.data[0].is_doctor,
                }
-               localStorage.user= user;
+
+               this.$session.start()
+               this.$session.set("user",user)
                router.push("/")
+
              }
            })
            .catch(r =>{

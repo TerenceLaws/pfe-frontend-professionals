@@ -11,7 +11,7 @@
           <router-link id="aboutButton" class="nav-link" to="/about">About</router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-link " to="/displayQrCodes">My QR Codes </router-link>
+          <router-link class="nav-link " to="/displayQrCodes" v-if="$store.state.isConnected">My QR Codes </router-link>
         </li>
       </ul>
       <ul class="nav justify-content-end">
@@ -19,7 +19,7 @@
           <router-link id="loginButton" class="btn btn-outline-success my-2 my-sm-0 mx-1" to="/login" v-if="!$store.state.isConnected">Sign In</router-link>
         </li>
         <li class="nav-item ">
-          <router-link id="registerButton" class="btn btn-outline-primary my-2 my-sm-0 mx-1" to="/register" >Sign Up</router-link>
+          <router-link id="registerButton" class="btn btn-outline-primary my-2 my-sm-0 mx-1" to="/register" v-if="!$store.state.isConnected">Sign Up</router-link>
         </li>
         <li class="nav-item ">
           <button  id="disconnectButton" class="btn btn-outline-danger my-2 my-sm-0 mx-1" to="/register" v-on:click="logout()" v-if="$store.state.isConnected" >log Out</button>
@@ -31,12 +31,16 @@
 
 <script>
 import store from './blockCovidStore'
+import router from '../router'
 export default {
+  router:router,
   store:store,
   name: "Navbar",
   methods:{
     logout:function (){
       store.commit('isConnectedFalse')
+      this.$session.destroy()
+      router.push('/')
     }
   }
 }

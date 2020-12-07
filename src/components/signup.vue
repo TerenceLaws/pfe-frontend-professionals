@@ -51,10 +51,15 @@ name: "signup",
 
       }
       axios.post("https://pfe-backend-dev.herokuapp.com/professionals/register",data)
-      .then(r => console.log(r))
-      .catch(error => console.error(error))
+      .then(r => {
+        console.log(r)
+        alert("ajout réussi.")
+      }).catch(error => console.error(error))
+
     }
-  }
+
+    }
+
 }
 </script>
 
