@@ -11,7 +11,7 @@
           <router-link id="aboutButton" class="nav-link" to="/about">About</router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-link " to="/displayQrCodes" v-if="$store.state.isConnected">My QR Codes </router-link>
+          <router-link class="nav-link " to="/displayLocations" v-if="$store.state.isConnected">My QR Codes </router-link>
         </li>
       </ul>
       <ul class="nav justify-content-end">
