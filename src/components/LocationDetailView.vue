@@ -15,8 +15,7 @@
 </template>
 
 <script>
-import axios from "axios";
-import QRCodeStyling from 'qr-code-styling';
+// import axios from "axios";
 
 export default {
   name: "LocationDetailView",
@@ -24,32 +23,11 @@ export default {
     location: {
       type: Object,
       default: () => ({location})
+    },
+    QRCode: {
+      type: Object,
+      // default: () => ({this.QRCode})
     }
-  },
-  data() {
-    return {
-      QRCode: undefined,
-    }
-
-  },
-  mounted() {
-    axios
-        .get('https://pfe-backend-dev.herokuapp.com/qrcodes/:'+location.facility_id)
-        .then(response => {
-          response.data.forEach(function (element) {
-            if (element.location_id === location._id) {
-              console.log("aaa" + element)
-              this.QRCode = new QRCodeStyling({
-                width: 200,
-                height: 200,
-                data: response.data._id
-              })
-            }
-          })
-        })
-        .catch(error => {
-          console.log(error)
-        })
   }
 }
 
