@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 let store =  new Vuex.Store({
     state:{
-        isConnected: false,
+        isConnected: localStorage.getItem("isConnected")|| null,
 
         string:"test"
     },

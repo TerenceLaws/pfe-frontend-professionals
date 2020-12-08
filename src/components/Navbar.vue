@@ -22,7 +22,7 @@
           <router-link id="registerButton" class="btn btn-outline-primary my-2 my-sm-0 mx-1" to="/register" v-if="!$store.state.isConnected">Sign Up</router-link>
         </li>
         <li class="nav-item ">
-          <button  id="disconnectButton" class="btn btn-outline-danger my-2 my-sm-0 mx-1" to="/register" v-on:click="logout()" v-if="$store.state.isConnected" >log Out</button>
+          <button  id="disconnectButton" class="btn btn-outline-danger my-2 my-sm-0 mx-1"  v-on:click="logout()" v-if="$store.state.isConnected" >log Out</button>
         </li>
       </ul>
     </div>
@@ -39,7 +39,7 @@ export default {
   methods:{
     logout:function (){
       store.commit('isConnectedFalse')
-      this.$session.destroy()
+      localStorage.clear()
       router.push('/')
     }
   }

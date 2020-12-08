@@ -23,7 +23,7 @@ export default {
   },
   data(){
     return{
-      user: this.$session.get("user")
+      user: JSON.parse(localStorage.getItem("user"))
     }
   }
 }
