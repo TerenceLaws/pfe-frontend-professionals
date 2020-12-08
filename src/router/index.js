@@ -34,7 +34,7 @@ const routes = [
   {
     path: '/displayQrCodes',
     name: 'DisplayQrCodes',
-   component: DisplayQrCodes
+    component: DisplayQrCodes
   }
 ]
 
