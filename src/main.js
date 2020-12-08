@@ -11,9 +11,9 @@ Vue.config.productionTip = false
 Vue.use(Vuex)
 Vue.use(Session)
 router.beforeEach((to, from, next) => {
-  if (to.name==='DisplayQrCodes' && !store.state.isConnected){
+  if (to.name==='DisplayLocations' && !store.state.isConnected){
     next({ name: 'Login' });
-  } else if(to.name==='Register' && store.state.isConnected) {
+  } else if((to.name==='Register'||to.name==='Login') && store.state.isConnected) {
     next({name: 'Home'})
   }
    else {
