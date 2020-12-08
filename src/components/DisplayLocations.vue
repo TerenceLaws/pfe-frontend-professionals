@@ -8,8 +8,8 @@
               v-bind:updateDetailsView="updateDetailsView"/>
         </div>
       </div>
-      <LocationDetailView v-bind:location="location"/>
-      <p>{{location.facility_id}}</p>
+      <LocationDetailView v-bind:location="location"
+                          v-bind:QRCode="QRCode"/>
     </div>
   </div>
 </template>
@@ -18,16 +18,18 @@
 import LocationListItem from "@/components/LocationListItem";
 import LocationDetailView from "@/components/LocationDetailView";
 import axios from "axios";
+import QRCodeStyling from "qr-code-styling";
 
 
 export default {
   name: "DisplayLocations",
-  components: {LocationDetailView, LocationListItem/*, LocationDetailView*/},
+  components: {LocationDetailView, LocationListItem},
   data() {
     return {
       locations: undefined,
       errored: false,
       location: undefined,
+      QRCode: undefined,
     }
 
   },
@@ -36,7 +38,6 @@ export default {
         .get('https://pfe-backend-dev.herokuapp.com/professionals/locations')
         .then(response => {
           this.locations = response.data;
-          // console.log("Data"+ this.locations)
           this.location = this.locations[0];
         })
         .catch(error => {
@@ -47,6 +48,22 @@ export default {
   methods: {
     updateDetailsView: function (location) {
       this.location = location
+      axios
+          .get('https://pfe-backend-dev.herokuapp.com/qrcodes/'+location.facility_id)
+          .then(response => {
+            response.data.forEach(function (element) {
+              if (element.location_id === location._id) {
+                this.QRCode = new QRCodeStyling({
+                  width: 200,
+                  height: 200,
+                  data: response.data._id
+                })
+              }
+            })
+          })
+          .catch(error => {
+            console.log(error)
+          })
     }
   }
 }
