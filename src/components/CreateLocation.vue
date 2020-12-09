@@ -20,10 +20,10 @@
                 <div class="form-group">
                   <label for="createSelectAVGTime" class="d-flex justify-content-start">Average time</label>
                   <select class="form-control" id="createSelectAVGTime">
-                    <option value="30">30min</option>
-                    <option selected value="1" default>1h</option>
-                    <option value="2">2h</option>
-                    <option value="3">5h</option>
+                    <option value="30min">30min</option>
+                    <option selected value="1h" default>1h</option>
+                    <option value="2h">2h</option>
+                    <option value="3h">5h</option>
                   </select>
                 </div>
                 <div class="form-group">
@@ -67,7 +67,6 @@ export default {
         description: document.getElementById("createLocationDescription").value,
         avg_time: document.getElementById("createSelectAVGTime").value
       }
-      console.log(dataLocation);
       axios.post("https://pfe-backend-dev.herokuapp.com/professionals/locations", dataLocation)
           .then(r => {
             console.log(r)
@@ -77,7 +76,7 @@ export default {
           })
       const dataQrCode = {
         doctor_id: null,
-        location_id: location._id
+        location_id: this.location._id
       }
       axios.post("https://pfe-backend-dev.herokuapp.com/qrcodes/insert", dataQrCode)
           .then(r => {

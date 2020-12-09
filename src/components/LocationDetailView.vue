@@ -16,7 +16,6 @@
 
 <script>
 // import axios from "axios";
-
 import CreateLocation from "@/components/CreateLocation";
 export default {
   name: "LocationDetailView",

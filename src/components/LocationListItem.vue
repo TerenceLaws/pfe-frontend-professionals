@@ -11,7 +11,7 @@
             <path fill-rule="evenodd"
                   d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
           </svg>
-          {{ location.interval }}</small>
+          {{ location.avg_time }}</small>
       </div>
       <p class="mb-1 text-left">{{ location.description }}</p>
     </a>
