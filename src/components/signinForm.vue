@@ -12,27 +12,50 @@
       </div>
     </form>
     <div class="form-group">
-      <button class="btn btn-secondary" v-on:click="test()">se connecter</button>
+      <button class="btn btn-secondary" v-on:click="login()">se connecter</button>
+
     </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import store from './blockCovidStore'
+import router from '../router'
 export default {
+  store:store,
 name: "signinForm",
   methods:{
-    test: function (){
+    login: function (){
       const data= {
           mail: document.getElementById("login").value,
           password:document.getElementById("password").value
       }
-      axios.post("https://pfe-backend-dev.herokuapp.com/professionals/login ",data).then(r => console.log(r)).catch(r => console.error(r))
+      axios.post("https://pfe-backend-dev.herokuapp.com/professionals/login ",data)
+           .then(r => {
+             if(r.status===200) {
+               console.log(r)
+               this.$store.commit('isConnectedTrue')
+               const user = {
+                 id:r.data[0]._id,
+                 mail:r.data[0].mail,
+                 address:r.data[0].address,
+                 name:r.data[0].name,
+                 is_doctor:r.data[0].is_doctor,
+               }
+
+               localStorage.setItem("user",JSON.stringify(user))
+               localStorage.setItem("isConnected",true)
+               router.push("/")
+
+             }
+           })
+           .catch(r =>{
+             console.error(r)
+           })
     }
   }
-
 }
-
 </script>
 
 <style scoped>
