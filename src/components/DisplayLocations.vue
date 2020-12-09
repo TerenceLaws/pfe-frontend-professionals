@@ -35,7 +35,7 @@ export default {
   },
   mounted() {
     axios
-        .get('https://pfe-backend-dev.herokuapp.com/professionals/locations')
+        .get('https://pfe-backend-dev.herokuapp.com/professionals/locations',{headers:{"authorization": localStorage.getItem("token")}})
         .then(response => {
           this.locations = response.data;
           this.location = this.locations[0];
