@@ -20,10 +20,10 @@
                 <div class="form-group">
                   <label for="createSelectAVGTime" class="d-flex justify-content-start">Average time</label>
                   <select class="form-control" id="createSelectAVGTime">
-                    <option value="30min">30min</option>
+                    <option value="30m">30min</option>
                     <option selected value="1h" default>1h</option>
                     <option value="2h">2h</option>
-                    <option value="3h">5h</option>
+                    <option value="5h">5h</option>
                   </select>
                 </div>
                 <div class="form-group">
@@ -62,7 +62,7 @@ export default {
   methods: {
     createLocation: function () {
       const dataLocation = {
-        facility_id: this.location.facility_id,
+        facility_id: JSON.parse(localStorage.getItem("user")).id,
         name: document.getElementById("createLocationName").value,
         description: document.getElementById("createLocationDescription").value,
         avg_time: document.getElementById("createSelectAVGTime").value
@@ -70,17 +70,18 @@ export default {
       axios.post("https://pfe-backend-dev.herokuapp.com/professionals/locations", dataLocation)
           .then(r => {
             console.log(r)
-          })
-          .catch(r => {
-            console.error(r)
-          })
-      const dataQrCode = {
-        doctor_id: null,
-        location_id: this.location._id
-      }
-      axios.post("https://pfe-backend-dev.herokuapp.com/qrcodes/insert", dataQrCode)
-          .then(r => {
-            console.log(r)
+            const dataQrCode = {
+              doctor_id: null,
+              location_id: r.data._id
+            }
+            axios.post("https://pfe-backend-dev.herokuapp.com/qrcodes/insert", dataQrCode)
+                .then(r => {
+                  console.log(r)
+                })
+                .catch(r => {
+                  console.error(r)
+                })
+
           })
           .catch(r => {
             console.error(r)

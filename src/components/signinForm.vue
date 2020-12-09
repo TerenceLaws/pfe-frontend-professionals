@@ -43,7 +43,6 @@ name: "signinForm",
                  name:r.data[0][0].name,
                  is_doctor:r.data[0][0].is_doctor,
                }
-
                localStorage.setItem("user",JSON.stringify(user))
                localStorage.setItem("isConnected",true)
                localStorage.setItem("token",r.data[1])

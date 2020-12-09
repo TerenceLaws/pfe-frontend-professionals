@@ -8,8 +8,7 @@
               v-bind:updateDetailsView="updateDetailsView"/>
         </div>
       </div>
-      <LocationDetailView v-bind:location="location"
-                          v-bind:QRCode="QRCode"/>
+      <LocationDetailView v-bind:location="location"/>
     </div>
   </div>
 </template>
@@ -18,8 +17,6 @@
 import LocationListItem from "@/components/LocationListItem";
 import LocationDetailView from "@/components/LocationDetailView";
 import axios from "axios";
-// import qrCodeStyling from 'https://cdn.skypack.dev/qr-code-styling';
-
 
 export default {
   name: "DisplayLocations",
@@ -29,16 +26,16 @@ export default {
       locations: undefined,
       errored: false,
       location: undefined,
-      QRCode: null,
     }
 
   },
   mounted() {
     axios
-        .get('https://pfe-backend-dev.herokuapp.com/professionals/locations',{headers:{"authorization": localStorage.getItem("token")}})
+        .get('https://pfe-backend-dev.herokuapp.com/professionals/locations', {headers: {"authorization": localStorage.getItem("token")}})
         .then(response => {
           this.locations = response.data;
           this.location = this.locations[0];
+          this.updateDetailsView(this.location);
         })
         .catch(error => {
           console.log(error)
@@ -48,24 +45,37 @@ export default {
   methods: {
     updateDetailsView: function (location) {
       this.location = location
-     /* axios
-          .get('https://pfe-backend-dev.herokuapp.com/qrcodes/?id='+location.facility_id)
+      axios
+          .get('https://pfe-backend-dev.herokuapp.com/qrcodes/?id=' + location._id, {headers: {"authorization": localStorage.getItem("token")}})
           .then(response => {
             response.data.forEach(function (element) {
-              qrCodeee = JSON.parse(JSON.stringify(element));
-              if (qrCodeee.location_id === "5fcfc3d7e5ba5374207e28ab") {
-                this.QRCode = new QRCodeStyling({
-                  width: 200,
-                  height: 200,
-                  data: qrCodeee._id
-                })
-                console.log(this.QRCode)
+              let qrCode = JSON.parse(JSON.stringify(element));
+              if (qrCode.location_id === location._id) {
+                // eslint-disable-next-line no-undef
+                const displayQrCode = new QRCodeStyling({
+                  width: 300,
+                  height: 300,
+                  data: qrCode._id,
+                  image: "",
+                  dotsOptions: {
+                    color: "#14222C",
+                    type: "rounded"
+                  },
+                  backgroundOptions: {
+                    color: "#ffffff",
+                  },
+                  imageOptions: {
+                    crossOrigin: "anonymous"
+                  }
+                });
+                document.getElementById("canvas").innerHTML = "";
+                displayQrCode.append(document.getElementById("canvas"));
               }
             })
           })
           .catch(error => {
             console.log(error)
-          })*/
+          })
     }
   }
 }
