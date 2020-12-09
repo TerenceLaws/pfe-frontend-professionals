@@ -34,18 +34,19 @@ name: "signinForm",
       axios.post("https://pfe-backend-dev.herokuapp.com/professionals/login ",data)
            .then(r => {
              if(r.status===200) {
-               console.log(r)
+               console.log(r.data[0])
                this.$store.commit('isConnectedTrue')
                const user = {
-                 id:r.data[0]._id,
-                 mail:r.data[0].mail,
-                 address:r.data[0].address,
-                 name:r.data[0].name,
-                 is_doctor:r.data[0].is_doctor,
+                 id:r.data[0][0]._id,
+                 mail:r.data[0][0].mail,
+                 address:r.data[0][0].address,
+                 name:r.data[0][0].name,
+                 is_doctor:r.data[0][0].is_doctor,
                }
 
                localStorage.setItem("user",JSON.stringify(user))
                localStorage.setItem("isConnected",true)
+               localStorage.setItem("token",r.data[1])
                router.push("/")
 
              }
