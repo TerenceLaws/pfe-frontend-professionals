@@ -7,8 +7,8 @@
       <div class="card-body">
         <h5 class="card-title">{{ location.name }}</h5>
         <p class="card-text">{{ location.description }}</p>
-        <a class="btn btn-warning mx-3">Edit location</a>
-        <a class="btn btn-warning">create new location</a>
+
+        <CreateLocation v-bind:location="location"/>
       </div>
     </div>
   </div>
@@ -17,8 +17,10 @@
 <script>
 // import axios from "axios";
 
+import CreateLocation from "@/components/CreateLocation";
 export default {
   name: "LocationDetailView",
+  components: {CreateLocation},
   props: {
     location: {
       type: Object,
