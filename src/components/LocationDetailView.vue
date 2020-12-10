@@ -9,10 +9,12 @@
       <div class="card-body">
         <h5 class="card-title">{{ location.name }}</h5>
         <p class="card-text">{{ location.description }}</p>
-
+        <button :id=location.id class="btn btn-info">telecharger</button>
         <CreateLocation v-bind:location="location"/>
       </div>
+
     </div>
+
   </div>
 </template>
 

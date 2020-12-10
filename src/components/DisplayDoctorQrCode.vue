@@ -2,7 +2,7 @@
   <div>
   <div id="DoctorCanvas">
   </div>
-
+  <button id="downloadbutton" class="btn btn-info">telecharger</button>
   </div>
 
 </template>
@@ -38,7 +38,10 @@ export default {
 
               document.getElementById("DoctorCanvas").innerHTML = "";
               displayQrCode.append(document.getElementById("DoctorCanvas"));
-              //displayQrCode.download();
+              document.getElementById("downloadbutton").onclick = function (){
+                displayQrCode.download();
+              }
+
 
             }
           })
