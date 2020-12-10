@@ -1,7 +1,7 @@
 <template>
   <div>
     <a class="list-group-item list-group-item-action flex-column align-items-start mr-0 "
-       v-for="location in locations" v-bind:location="location" v-bind:key="location._id" v-on:click="updateDetailsView(location)">
+       v-for="location in locations" v-bind:location="location" v-bind:key="location.id" v-on:click="updateDetailsView(location)">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">{{ location.name }}</h5>
         <small>
@@ -11,7 +11,7 @@
             <path fill-rule="evenodd"
                   d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
           </svg>
-          {{ location.avg_time }}</small>
+          {{ location.max_time }}</small>
       </div>
       <p class="mb-1 text-left">{{ location.description }}</p>
     </a>

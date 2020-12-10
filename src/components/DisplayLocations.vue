@@ -71,6 +71,7 @@ export default {
                 });
                 document.getElementById("canvas").innerHTML = "";
                 displayQrCode.append(document.getElementById("canvas"));
+
               }
             })
           })

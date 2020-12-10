@@ -66,7 +66,7 @@ export default {
         facility_id: JSON.parse(localStorage.getItem("user")).id,
         name: document.getElementById("createLocationName").value,
         description: document.getElementById("createLocationDescription").value,
-        avg_time: document.getElementById("createSelectAVGTime").value
+        max_time: document.getElementById("createSelectAVGTime").value
       }
       console.log(dataLocation)
       axios.post("https://pfe-backend-dev.herokuapp.com/professionals/locations", dataLocation)
@@ -79,7 +79,7 @@ export default {
             axios.post("https://pfe-backend-dev.herokuapp.com/qrcodes/insert", dataQrCode)
                 .then(r => {
                   console.log(r)
-
+                  this.$forceUpdate()
                 })
                 .catch(r => {
                   console.error(r)

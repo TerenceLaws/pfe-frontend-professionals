@@ -49,6 +49,7 @@ name: "signinForm",
                localStorage.setItem("isConnected",true)
                localStorage.setItem("isDoctor",r.data[0][0].is_doctor)
                if(r.data[0][0].is_doctor) {
+                 console.log("je suis doctor", r.data[0][0].is_doctor)
                  this.$store.commit("isDoctorTrue")
                  axios.get("https://pfe-backend-dev.herokuapp.com/qrcodes")
                      .then(result =>{
@@ -78,6 +79,7 @@ name: "signinForm",
                  })
 
                }else {
+                 console.log("je suis doctor", r.data[0][0].is_doctor)
                  this.$store.commit("isDoctorFalse")
                }
                localStorage.setItem("token",r.data[1])

@@ -11,10 +11,10 @@
           <router-link id="aboutButton" class="nav-link" to="/about">About</router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-link " to="/displayLocations" v-if="$store.state.isConnected&&!$store.state.isDoctor">My QR Codes </router-link>
+          <router-link class="nav-link " to="/displayLocations" v-if="$store.state.isConnected&&$store.state.isDoctor==='false'">My QR Codes </router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-link " to="/displayDoctorQrCode" v-if="$store.state.isConnected&&$store.state.isDoctor">My QR Code </router-link>
+          <router-link class="nav-link " to="/displayDoctorQrCode" v-if="$store.state.isConnected&&$store.state.isDoctor==='true'">My QR Code </router-link>
         </li>
       </ul>
       <ul class="nav justify-content-end">
