@@ -18,7 +18,7 @@
                   <input type="text" class="form-control" id="createLocationName" placeholder="Enter name">
                 </div>
                 <div class="form-group">
-                  <label for="createSelectAVGTime" class="d-flex justify-content-start">Average time</label>
+                  <label for="createSelectAVGTime" class="d-flex justify-content-start">Maximum time</label>
                   <select class="form-control" id="createSelectAVGTime">
                     <option value="30m">30min</option>
                     <option selected value="1h" default>1h</option>
@@ -43,7 +43,7 @@
           </div>
         </div>
       </div>
-      <button class="btn btn-warning" data-toggle="modal" data-target="#modalCreateLocation">create new location
+      <button class="btn btn-warning " data-toggle="modal" data-target="#modalCreateLocation">create new location
       </button>
     </div>
   </div>

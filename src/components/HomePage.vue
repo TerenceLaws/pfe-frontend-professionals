@@ -1,14 +1,13 @@
 <template>
-  <div class="hello container-fluid">
-    <div class="row">
-      <div class="col-md-4">
-        <h1>{{ msg }}</h1>
-
-        <h2 v-if="$store.state.isConnected">Bonjour {{user.name}} </h2>
-      </div>
-
+ 
+  <div class="card  h-100">
+    <div class="card-header">
+      <img src="../assets/logoCovid.jpg" class="card-img-top " alt="...">
     </div>
-
+    <h1 class="card-title d-flex justify-content-center">{{ msg }}</h1>
+    <div class="card-body h-100">
+      <p v-if="$store.state.isConnected" class="card-text">Bonjour {{user.name}}</p>
+    </div>
   </div>
 </template>
 
@@ -21,8 +20,8 @@ export default {
   props: {
     msg: String
   },
-  data(){
-    return{
+  data() {
+    return {
       user: JSON.parse(localStorage.getItem("user"))
     }
   }
