@@ -53,7 +53,6 @@
 <script>
 import axios from "axios";
 
-
 export default {
   name: "CreateLocation",
   props: {
@@ -71,14 +70,14 @@ export default {
         max_time: document.getElementById("createSelectAVGTime").value
       }
       console.log(dataLocation)
-      axios.post("https://pfe-backend-dev.herokuapp.com/professionals/locations", dataLocation)
+      axios.post(process.env.VUE_APP_REQ_URL+"/professionals/locations", dataLocation)
           .then(r => {
             console.log(r)
             const dataQrCode = {
               doctor_id: null,
               location_id: r.data.id
             }
-            axios.post("https://pfe-backend-dev.herokuapp.com/qrcodes/insert", dataQrCode)
+            axios.post(process.env.VUE_APP_REQ_URL+"/qrcodes/insert", dataQrCode)
                 .then(r => {
                   console.log(r)
 
@@ -86,7 +85,6 @@ export default {
                 .catch(r => {
                   console.error(r)
                 })
-
           })
           .catch(r => {
             console.error(r)

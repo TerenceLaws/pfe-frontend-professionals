@@ -50,7 +50,7 @@ name: "signup",
         password:document.getElementById("registerPassword").value,
 
       }
-      axios.post("https://pfe-backend-dev.herokuapp.com/professionals/register",data)
+      axios.post(process.env.VUE_APP_REQ_URL+"/professionals/register",data)
       .then(r => {
         console.log(r)
         alert("ajout réussi.")

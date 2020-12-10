@@ -9,12 +9,11 @@
 
 <script>
 import axios from "axios";
-
 export default {
   name: "DisplayDoctorQrCode",
   mounted() {
     axios
-        .get('https://pfe-backend-dev.herokuapp.com/qrcodes', {headers: {"authorization": localStorage.getItem("token")}})
+        .get(process.env.VUE_APP_REQ_URL+"/qrcodes", {headers: {"authorization": localStorage.getItem("token")}})
         .then(response => {
           response.data.forEach(function (element) {
             let qrCode = JSON.parse(JSON.stringify(element));
@@ -24,7 +23,7 @@ export default {
                 width: 300,
                 height: 300,
                 data: qrCode.id,
-                image: "http://localhost:5000/coronavirus_color.png",
+                image: process.env.VUE_APP_REQ_URL+"/coronavirus_color.png",
                 dotsOptions: {
                   color: "#14222C",
                   type: "rounded"
