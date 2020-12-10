@@ -4,26 +4,26 @@
     <form>
       <fieldset>
         <div class="form-group">
-          <label for="registerName">Entrez votre nom</label>
+          <label for="registerName" class="d-flex justify-content-start">Entrez votre nom</label>
           <input type="text" class="form-control" id="registerName" placeholder="Prenom Nom">
         </div>
         <div class="form-group">
-          <label for="registerType">Type</label>
+          <label for="registerType" class="d-flex justify-content-start">Type</label>
           <select id="registerType" class="form-control">
             <option value="true">docteur</option>
             <option value="false">etablissement</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="registerAdresse">Entrez votre adresse</label>
+          <label for="registerAdresse" class="d-flex justify-content-start">Entrez votre adresse</label>
           <input type="text" class="form-control" id="registerAdresse" placeholder="Rue de l'exemple n°6">
         </div>
         <div class="form-group">
-          <label for="registerEmail">Entrez votre email</label>
+          <label for="registerEmail" class="d-flex justify-content-start">Entrez votre email</label>
           <input type="email" class="form-control" id="registerEmail" placeholder="exemple@hotmail.com">
         </div>
         <div class="form-group">
-          <label for="registerPassword">Entrez votre mot de passe</label>
+          <label for="registerPassword" class="d-flex justify-content-start">Entrez votre mot de passe</label>
           <input type="password" class="form-control" id="registerPassword">
         </div>
 

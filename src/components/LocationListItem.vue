@@ -1,7 +1,7 @@
 <template>
   <div>
     <a class="list-group-item list-group-item-action flex-column align-items-start mr-0 "
-       v-for="location in locations" v-bind:location="location" v-bind:key="location._id" v-on:click="updateDetailsView(location)">
+       v-for="location in locations" v-bind:location="location" v-bind:key="location.id" v-on:click="updateDetailsView(location)">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">{{ location.name }}</h5>
         <small>

@@ -74,7 +74,7 @@ export default {
             console.log(r)
             const dataQrCode = {
               doctor_id: null,
-              location_id: r.data._id
+              location_id: r.data.id
             }
             axios.post("https://pfe-backend-dev.herokuapp.com/qrcodes/insert", dataQrCode)
                 .then(r => {
