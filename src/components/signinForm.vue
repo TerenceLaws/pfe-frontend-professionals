@@ -50,19 +50,33 @@ name: "signinForm",
                localStorage.setItem("isDoctor",r.data[0][0].is_doctor)
                if(r.data[0][0].is_doctor) {
                  this.$store.commit("isDoctorTrue")
-                 //need axios request
-                 const dataQrCode = {
-                   doctor_id: r.data[0][0].id,
-                   location_id: null
-                 }
-                 axios.post("https://pfe-backend-dev.herokuapp.com/qrcodes/insert", dataQrCode)
-                     .then(r => {
-                       console.log(r)
+                 axios.get("https://pfe-backend-dev.herokuapp.com/qrcodes")
+                     .then(result =>{
+                       let havingqrcode= false;
+                       result.data.forEach(function (element){
+                         let qrCode = JSON.parse(JSON.stringify(element))
+                         if (qrCode.doctor_id === JSON.parse(localStorage.getItem("user")).id) havingqrcode=true;
+                       })
+                       if(!havingqrcode){
+                         console.log("je n'ai pas encore de qr code j'en recois un ")
+                         //need axios request
+                         const dataQrCode = {
+                           doctor_id: r.data[0][0].id,
+                           location_id: null
+                         }
+                         axios.post("https://pfe-backend-dev.herokuapp.com/qrcodes/insert", dataQrCode)
+                             .then(r => {
+                               console.log(r)
 
-                     })
-                     .catch(r => {
-                       console.error(r)
-                     })
+                             })
+                             .catch(r => {
+                               console.error(r)
+                             })
+                       }
+                     }).catch(r => {
+                       console.log(r)
+                 })
+
                }else {
                  this.$store.commit("isDoctorFalse")
                }
