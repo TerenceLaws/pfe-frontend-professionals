@@ -13,6 +13,9 @@
         <li class="nav-item">
           <router-link class="nav-link " to="/displayLocations" v-if="$store.state.isConnected">My QR Codes </router-link>
         </li>
+        <li class="nav-item">
+          <router-link class="nav-link " to="/displayDoctorQrCode" v-if="$store.state.isConnected">My QR Code </router-link>
+        </li>
       </ul>
       <ul class="nav justify-content-end">
         <li class="nav-item ">

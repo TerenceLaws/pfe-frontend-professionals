@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import signinForm from "@/components/signinForm";
 import signupForm from "@/components/signup"
 import DisplayLocations from "@/components/DisplayLocations";
+import DisplayDoctorQrCode from "@/components/DisplayDoctorQrCode";
 
 Vue.use(VueRouter)
 
@@ -35,6 +36,11 @@ const routes = [
     path: '/displayLocations',
     name: 'DisplayLocations',
    component: DisplayLocations
+  },
+  {
+    path: '/displayDoctorQrCode',
+    name: 'DisplayDoctorQrCode',
+   component: DisplayDoctorQrCode
   }
 ]
 
