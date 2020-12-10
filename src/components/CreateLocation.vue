@@ -36,7 +36,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-warning" v-on:click="createLocation">Create Location</button>
+              <button type="button" class="btn btn-warning" v-on:click="createLocation" data-dismiss="modal">Create Location</button>
             </div>
           </div>
         </div>
@@ -50,6 +50,7 @@
 
 <script>
 import axios from "axios";
+
 
 export default {
   name: "CreateLocation",
@@ -78,6 +79,7 @@ export default {
             axios.post("https://pfe-backend-dev.herokuapp.com/qrcodes/insert", dataQrCode)
                 .then(r => {
                   console.log(r)
+
                 })
                 .catch(r => {
                   console.error(r)
@@ -87,6 +89,7 @@ export default {
           .catch(r => {
             console.error(r)
           })
+
     }
   }
 }

@@ -11,10 +11,10 @@
           <router-link id="aboutButton" class="nav-link" to="/about">About</router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-link " to="/displayLocations" v-if="$store.state.isConnected">My QR Codes </router-link>
+          <router-link class="nav-link " to="/displayLocations" v-if="$store.state.isConnected&&!$store.state.isDoctor">My QR Codes </router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-link " to="/displayDoctorQrCode" v-if="$store.state.isConnected">My QR Code </router-link>
+          <router-link class="nav-link " to="/displayDoctorQrCode" v-if="$store.state.isConnected&&$store.state.isDoctor">My QR Code </router-link>
         </li>
       </ul>
       <ul class="nav justify-content-end">
@@ -38,6 +38,11 @@ import router from '../router'
 export default {
   router:router,
   store:store,
+  data(){
+    return {
+
+    }
+  },
   name: "Navbar",
   methods:{
     logout:function (){

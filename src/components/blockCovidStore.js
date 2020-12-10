@@ -7,7 +7,7 @@ let store =  new Vuex.Store({
     state:{
         isConnected: localStorage.getItem("isConnected")|| false,
 
-        string:"test"
+        isDoctor : localStorage.getItem("isDoctor") || false,
     },
 
     getters:{
@@ -20,6 +20,11 @@ let store =  new Vuex.Store({
         },
         isConnectedTrue(){
             this.state.isConnected=true;
+        },isDoctorFalse(){
+            this.state.isDoctor=false;
+        },
+        isDoctorTrue(){
+            this.state.isDoctor=true;
         }
     },
 

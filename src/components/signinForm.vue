@@ -36,6 +36,8 @@ name: "signinForm",
              if(r.status===200) {
                console.log(r.data[0])
                this.$store.commit('isConnectedTrue')
+
+
                const user = {
                  id:r.data[0][0].id,
                  mail:r.data[0][0].mail,
@@ -45,6 +47,25 @@ name: "signinForm",
                }
                localStorage.setItem("user",JSON.stringify(user))
                localStorage.setItem("isConnected",true)
+               localStorage.setItem("isDoctor",r.data[0][0].is_doctor)
+               if(r.data[0][0].is_doctor) {
+                 this.$store.commit("isDoctorTrue")
+                 //need axios request
+                 const dataQrCode = {
+                   doctor_id: r.data[0][0].id,
+                   location_id: null
+                 }
+                 axios.post("https://pfe-backend-dev.herokuapp.com/qrcodes/insert", dataQrCode)
+                     .then(r => {
+                       console.log(r)
+
+                     })
+                     .catch(r => {
+                       console.error(r)
+                     })
+               }else {
+                 this.$store.commit("isDoctorFalse")
+               }
                localStorage.setItem("token",r.data[1])
                router.push("/")
 

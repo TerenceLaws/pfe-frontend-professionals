@@ -15,7 +15,7 @@ export default {
         .then(response => {
           response.data.forEach(function (element) {
             let qrCode = JSON.parse(JSON.stringify(element));
-            if (qrCode.doctor_id === localStorage.getItem("user").id) {
+            if (qrCode.doctor_id === JSON.parse(localStorage.getItem("user")).id) {
               // eslint-disable-next-line no-undef
               const displayQrCode = new QRCodeStyling({
                 width: 300,
