@@ -23,7 +23,7 @@ export default {
                 width: 300,
                 height: 300,
                 data: qrCode.id,
-                image: "https://www.flaticon.com/svg/vstatic/svg/2913/2913604.svg?token=exp=1607613975~hmac=f66496467e79f33552bcd5585883a839",
+                image: "",
                 dotsOptions: {
                   color: "#14222C",
                   type: "rounded"
