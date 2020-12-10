@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-4">
         <h1>{{ msg }}</h1>
-        <p> Cras justo odio, dapibus ac facilisis in, egestas eget quam.Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+
         <h2 v-if="$store.state.isConnected">Bonjour {{user.name}} </h2>
       </div>
 
