@@ -1,7 +1,11 @@
 <template>
+  <div>
   <div id="DoctorCanvas">
 
   </div>
+
+  </div>
+
 </template>
 
 <script>
@@ -33,8 +37,11 @@ export default {
                   crossOrigin: "anonymous"
                 }
               });
+
               document.getElementById("DoctorCanvas").innerHTML = "";
               displayQrCode.append(document.getElementById("DoctorCanvas"));
+              //displayQrCode.download();
+
             }
           })
         })
