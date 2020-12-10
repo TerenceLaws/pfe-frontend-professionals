@@ -36,7 +36,9 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-warning" v-on:click="createLocation" data-dismiss="modal">Create Location</button>
+              <button type="button" class="btn btn-warning" v-on:click="createLocation" data-dismiss="modal">Create
+                Location
+              </button>
             </div>
           </div>
         </div>
@@ -74,12 +76,12 @@ export default {
             console.log(r)
             const dataQrCode = {
               doctor_id: null,
-              location_id: r.data._id
+              location_id: r.data.id
             }
             axios.post("https://pfe-backend-dev.herokuapp.com/qrcodes/insert", dataQrCode)
                 .then(r => {
                   console.log(r)
-                  this.$forceUpdate()
+
                 })
                 .catch(r => {
                   console.error(r)

@@ -1,19 +1,20 @@
 <template>
   <div id="signinForm" class="container">
     <h3 style="padding-top: 30px;padding-bottom: 15px;text-decoration: underline ">Se connecter</h3>
-    <form>
-      <div class="form-group">
-        <label for="login">login</label>
-        <input type="text" id="login">
-      </div>
-      <div class="form-group">
-        <label for="password">mot de passe</label>
-        <input type="password" id="password">
-      </div>
+    <form class="d-flex justify-content-center">
+      <fieldset>
+        <div class="form-group ">
+          <label for="login" class="d-flex justify-content-start">login</label>
+          <input type="text" class="form-control" id="login">
+        </div>
+        <div class="form-group">
+          <label for="password" class="d-flex justify-content-start">mot de passe</label>
+          <input type="password" class="form-control" id="password">
+        </div>
+      </fieldset>
     </form>
     <div class="form-group">
       <button class="btn btn-secondary" v-on:click="login()">se connecter</button>
-
     </div>
   </div>
 </template>

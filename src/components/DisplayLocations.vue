@@ -47,17 +47,17 @@ export default {
     updateDetailsView: function (location) {
       this.location = location
       axios
-          .get('https://pfe-backend-dev.herokuapp.com/qrcodes/?id=' + location._id, {headers: {"authorization": localStorage.getItem("token")}})
+          .get('https://pfe-backend-dev.herokuapp.com/qrcodes/?id=' + location.id, {headers: {"authorization": localStorage.getItem("token")}})
           .then(response => {
             response.data.forEach(function (element) {
               let qrCode = JSON.parse(JSON.stringify(element));
-              if (qrCode.location_id === location._id) {
+              if (qrCode.location_id === location.id) {
                 // eslint-disable-next-line no-undef
                 const displayQrCode = new QRCodeStyling({
                   width: 300,
                   height: 300,
-                  data: qrCode._id,
-                  image: "",
+                  data: qrCode.id,
+                  image: "http://localhost:5000/coronavirus_color.png",
                   dotsOptions: {
                     color: "#14222C",
                     type: "rounded"
