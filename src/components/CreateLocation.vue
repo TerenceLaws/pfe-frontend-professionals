@@ -67,6 +67,7 @@ export default {
         description: document.getElementById("createLocationDescription").value,
         avg_time: document.getElementById("createSelectAVGTime").value
       }
+      console.log(dataLocation)
       axios.post("https://pfe-backend-dev.herokuapp.com/professionals/locations", dataLocation)
           .then(r => {
             console.log(r)

@@ -31,9 +31,10 @@ export default {
   },
   mounted() {
     axios
-        .get('https://pfe-backend-dev.herokuapp.com/professionals/locations', {headers: {"authorization": localStorage.getItem("token")}})
+        .get('https://pfe-backend-dev.herokuapp.com/professionals/locations_by_facility', {headers: {"authorization": localStorage.getItem("token")}})
         .then(response => {
           this.locations = response.data;
+          console.log(this.locations)
           this.location = this.locations[0];
           this.updateDetailsView(this.location);
         })
