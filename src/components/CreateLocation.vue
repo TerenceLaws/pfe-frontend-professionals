@@ -36,7 +36,9 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-warning" v-on:click="createLocation" data-dismiss="modal">Create Location</button>
+              <button type="button" class="btn btn-warning" v-on:click="createLocation" data-dismiss="modal">Create
+                Location
+              </button>
             </div>
           </div>
         </div>
@@ -66,7 +68,7 @@ export default {
         facility_id: JSON.parse(localStorage.getItem("user")).id,
         name: document.getElementById("createLocationName").value,
         description: document.getElementById("createLocationDescription").value,
-        avg_time: document.getElementById("createSelectAVGTime").value
+        max_time: document.getElementById("createSelectAVGTime").value
       }
       console.log(dataLocation)
       axios.post("https://pfe-backend-dev.herokuapp.com/professionals/locations", dataLocation)
@@ -79,7 +81,6 @@ export default {
             axios.post("https://pfe-backend-dev.herokuapp.com/qrcodes/insert", dataQrCode)
                 .then(r => {
                   console.log(r)
-
                 })
                 .catch(r => {
                   console.error(r)

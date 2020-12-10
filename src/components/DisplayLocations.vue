@@ -57,7 +57,7 @@ export default {
                   width: 300,
                   height: 300,
                   data: qrCode.id,
-                  image: "",
+                  image: "http://localhost:5000/coronavirus_color.png",
                   dotsOptions: {
                     color: "#14222C",
                     type: "rounded"
