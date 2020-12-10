@@ -39,7 +39,7 @@ export default {
               document.getElementById("DoctorCanvas").innerHTML = "";
               displayQrCode.append(document.getElementById("DoctorCanvas"));
               document.getElementById("downloadbutton").onclick = function (){
-                displayQrCode.download();
+                displayQrCode.download({name : JSON.parse(localStorage.getItem("user")).name,});
               }
 
 

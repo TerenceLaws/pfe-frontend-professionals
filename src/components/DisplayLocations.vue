@@ -71,7 +71,7 @@ export default {
                 document.getElementById("canvas").innerHTML = "";
                 displayQrCode.append(document.getElementById("canvas"));
                 document.getElementById(location.id).onclick = function (){
-                  displayQrCode.download();
+                  displayQrCode.download({name : location.name,});
                 }
 
               }
